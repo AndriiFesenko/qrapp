@@ -4,29 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Reader</title>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/grid.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/version.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/detector.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/formatinf.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/errorlevel.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/bitmat.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/datablock.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/bmparser.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/datamask.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/rsdecoder.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/gf256poly.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/gf256.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/decoder.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qrcode.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/findpat.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/alignpat.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/databr.js"></script>
-    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/finder.js"></script>
 </head>
 <body>
-    <h1>QR Code Reader 2</h1>
-    <video id="qr-video" width="100%" height="100%" style="max-width: 600px;"></video>
-    <script src="app.js"></script>
+    <h1>QR Code Reader 3</h1>
+    <zxing-scanner
+    [(torch)]="torch"
+    [(tryHarder)]="tryHarder"
+    (codeEmitter)="onCodeScanned($event)"></zxing-scanner>
+    <script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.18.3"></script>
+    <script>
+        // Define the onCodeScanned callback function
+        function onCodeScanned(event) {
+            alert('QR Code detected: ' + event);
+        }
+
+        // Attach the callback function to the window object for use in the HTML
+        window.onCodeScanned = onCodeScanned;
+    </script>
 </body>
 </html>
